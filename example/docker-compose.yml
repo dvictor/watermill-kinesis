@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  localstack:
+    image: localstack/localstack:2.0.0-arm64
+    environment:
+      - EAGER_SERVICE_LOADING=1
+      - KINESIS_LATENCY=0
+      - SERVICES=s3,kinesis
+    ports:
+      - "4566-4582:4566-4582"
+      - "8080:8080"
