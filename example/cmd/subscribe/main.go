@@ -4,13 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/ThreeDotsLabs/watermill"
-	"github.com/dvictor/watermill-kinesis"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
 
+	"github.com/dvictor/watermill-kinesis"
+
+	"github.com/ThreeDotsLabs/watermill"
 	"github.com/vmware/vmware-go-kcl-v2/clientlibrary/config"
 )
 

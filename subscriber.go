@@ -1,12 +1,14 @@
 package kinesis
 
 import (
-	"github.com/ThreeDotsLabs/watermill"
+	"sync"
+
 	"github.com/dvictor/watermill-kinesis/subscriber"
+
+	"github.com/ThreeDotsLabs/watermill"
 	"github.com/vmware/vmware-go-kcl-v2/clientlibrary/config"
 	"github.com/vmware/vmware-go-kcl-v2/clientlibrary/interfaces"
 	"github.com/vmware/vmware-go-kcl-v2/clientlibrary/worker"
-	"sync"
 )
 
 type recordProcessorFactory struct {

@@ -3,11 +3,12 @@ package subscriber_test
 import (
 	"context"
 	"fmt"
-	"github.com/ThreeDotsLabs/watermill/message"
-	"github.com/dvictor/watermill-kinesis/subscriber"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/ThreeDotsLabs/watermill/message"
+	"github.com/dvictor/watermill-kinesis/subscriber"
 )
 
 type testProducer struct {

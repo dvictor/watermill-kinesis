@@ -3,9 +3,10 @@ package kinesis
 import (
 	"encoding/base64"
 	"encoding/json"
+	"time"
+
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis/types"
-	"time"
 )
 
 const PartitionKeyKey = "partitionKey"

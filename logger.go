@@ -2,13 +2,14 @@ package kinesis
 
 import (
 	"fmt"
-	"github.com/ThreeDotsLabs/watermill"
-	"github.com/vmware/vmware-go-kcl-v2/logger"
 	"io"
 	"log"
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/ThreeDotsLabs/watermill"
+	"github.com/vmware/vmware-go-kcl-v2/logger"
 )
 
 type loggerAdapter struct {

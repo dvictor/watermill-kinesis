@@ -3,6 +3,7 @@ package kinesis
 import (
 	"context"
 	"fmt"
+
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis"
