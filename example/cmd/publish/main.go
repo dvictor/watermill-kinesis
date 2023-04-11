@@ -11,12 +11,13 @@ import (
 func main() {
 	const topic = "victor-vmware-kcl"
 
-	opts := kinesis.ClientOptions{
+	opts := &kinesis.ClientOptions{
 		Region: "us-west-2",
 	}
-	// if using Localstack
-	kinesis.WithEndpoint("http://127.0.0.1:4566")(&opts)
-	publisher := kinesis.NewPublisher(opts)
+
+	publisher := kinesis.PublisherBuilder(opts).
+		WithEndpoint("http://127.0.0.1:4566"). // if using Localstack
+		Build()
 
 	var messages []*message.Message
 

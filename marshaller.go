@@ -49,6 +49,8 @@ func JSONUnmarshaller(record types.Record) (*message.Message, error) {
 	return msg, nil
 }
 
+type Marshaller func(message *message.Message) (types.PutRecordsRequestEntry, error)
+
 func JSONMarshaller(message *message.Message) (types.PutRecordsRequestEntry, error) {
 	data := &MessageData{
 		WatermillMessageUUID: message.UUID,

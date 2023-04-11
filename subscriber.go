@@ -87,31 +87,31 @@ func (r *recordProcessor) Shutdown(input *interfaces.ShutdownInput) {
 	}
 }
 
-type Builder struct {
+type SubBuilder struct {
 	kclConfig    *config.KinesisClientLibConfiguration
 	unmarshaller Unmarshaller
 	log          watermill.LoggerAdapter
 }
 
-func SubscriberBuilder(kclConfig *config.KinesisClientLibConfiguration) Builder {
-	return Builder{
+func SubscriberBuilder(kclConfig *config.KinesisClientLibConfiguration) SubBuilder {
+	return SubBuilder{
 		kclConfig:    kclConfig,
 		unmarshaller: JSONUnmarshaller,
 		log:          NewStdLogger(true, false, false),
 	}
 }
 
-func (b Builder) WithLogger(logger watermill.LoggerAdapter) Builder {
+func (b SubBuilder) WithLogger(logger watermill.LoggerAdapter) SubBuilder {
 	b.log = logger
 	return b
 }
 
-func (b Builder) WithUnmarshaller(unmarshaller Unmarshaller) Builder {
+func (b SubBuilder) WithUnmarshaller(unmarshaller Unmarshaller) SubBuilder {
 	b.unmarshaller = unmarshaller
 	return b
 }
 
-func (b Builder) Build() (*subscriber.Subscriber, error) {
+func (b SubBuilder) Build() (*subscriber.Subscriber, error) {
 
 	var factory subscriber.ProducerFactory = func(handler subscriber.MessageHandler, topic string) subscriber.Producer {
 		b.kclConfig.StreamName = topic
