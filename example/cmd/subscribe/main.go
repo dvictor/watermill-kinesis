@@ -2,8 +2,6 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"os"
 	"os/signal"
 	"sync"
@@ -61,14 +59,11 @@ func main() {
 	go func() {
 		for msg := range messages {
 
-			var data map[string]any
-			_ = json.Unmarshal(msg.Payload, &data)
-
 			logger.Info("received message", watermill.LogFields{
 				"messageID": msg.UUID,
 				"pkey":      msg.Metadata[kinesis.PartitionKeyKey],
 				"shard":     msg.Metadata[kinesis.ShardIDKey],
-				"payload":   fmt.Sprintf("%v", data),
+				"payload":   string(msg.Payload),
 			})
 			// Must acknowledge that message was processed to avoid deadlock
 			// if processing failed, can instead do msg.Nack() and the message will be served again on the channel
