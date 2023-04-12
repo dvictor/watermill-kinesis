@@ -28,11 +28,14 @@ func main() {
 		"us-west-2",
 		workerID,
 	)
+
+	// If using Localstack
 	kclConfig.KinesisEndpoint = "http://127.0.0.1:4566"
 	kclConfig.DynamoDBEndpoint = kclConfig.KinesisEndpoint
 
 	kclConfig.MaxRecords = 100
 	kclConfig.MaxLeasesForWorker = 6
+	kclConfig.EnableLeaseStealing = true // enable automatic redistribution of shards when workers added/removed
 
 	ctx := context.TODO()
 
